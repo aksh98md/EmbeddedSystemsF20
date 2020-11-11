@@ -17,6 +17,10 @@ The Raspberry Pi acts as a central control for the system, and the web camera an
 Once a gesture is detected, it performs the specified task previously defined by the user, by default sending a set of keystrokes to the computer, which recognizes the Raspberry Pi as a keyboard input source. Examples of this flow would be to map gestures to perform screenshots, control online presentation slides, mute and unmute video calls, adjust volume, and play, pause, and other actions in regards to multimedia playback. These specific settings are stored on the Raspberry Pi and can be accessed through the PC to adjust them. 
 
 ### 3. Prior Works
+#### A basic hand gesture control system for PC applications
+This paper explores the problems that can come up when exploring computer applications that are controlled via gestures that are both composed of static symbols and dynamic motions [1]. The dynamic motion model they use in this paper is done in real time and with a linear-in-parameter dynamic system, which is a linear state space model whose dynamics vary as a function of certain time-varying parameters called scheduling parameters. Some of the computer programs that this paper aims to control with hand gestures are browsers and PowerPoint, but they express that this can be expanded to other applications and other I/O forms as well, such as mouse, keyboard and voice. Some of the benefits of such system are that these interfaces can by used by the many people who cannot adequately use typical computer interaction techniques, while at a low common cost.
+
+
 ### 4. Technical Approach and Implemenetation
 ### 5. Analysis
 ### 6. Conclusion and Future Works
