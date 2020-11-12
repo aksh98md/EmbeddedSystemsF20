@@ -10,7 +10,7 @@ working, methods to improve workflow through human computer interaction can be e
 
 The device is composed of four components: the main personal computer, Raspberry Pi, Arduino Nano 33 BLE Sense, and a USB web camera. The following figure below demonstrates the interaction between them:
 
-
+![alt text](https://user-images.githubusercontent.com/73715503/98816959-62ed9900-2464-11eb-850f-447bb0f56d50.PNG)
 
 The Raspberry Pi acts as a central control for the system, and the web camera and Arduino are connected to the Raspberry Pi to feed inputs into it. The Raspberry Pi takes in the continuous video stream of the web camera and sensor data and continuously runs static image recognition with OpenCV. This is done locally to reduce the processing load on the PC and prevent any heavy network usage when unneeded. Sensors on the Arduino are used to assist with the gesture controls, most importantly preventing false positives in triggering of recognition, which can be activated through the detection of a hand with the proximity sensor or a voice activated method, which would require an either an outgoing internet connection to call voice recognition APIs or be performed locally. 
 
@@ -26,6 +26,13 @@ This is a project that use an Arduino to implement a hand getsture control. Some
 #### Robust Part-Based Hand Gesture Recognition Using Kinect Sensor 
 This prior work focuses on building a robust part-based hand gesture recognition systems using Kinect sensor [3]. As stated in this prior work ", the hand is a smaller object with more complex articulations and more easily affected by segmentation errors", hence this paper explores potential solutions for some of these errors. This paper also attempts to solve the problem of differnt hand shapes by applying the distance metric, Finger-Earth Mover's Distance. The Finger-Earth Mover's Distance is a distance metric that treats each finger as a cluster and penalize the empty finger-hole. This helps in the case that it the sensor may only match finger parts and not the whole hand, and it helps better distinguish the hand gestures that have slight differences. [3]
 
+#### Training a Neural Network to Detect Hand Gestures with OpenCV in Python
+This article shows the way to detect some simple hand gesture by using Python and Opencv to capture the image. 
+The paper mainly focus on how to train the model from the large picture set get from Kaggle (Also, we could use our own dataset instead, this will increase the amount of gestures we can detect) and turn to its CNN network. 
+The trained model used Opencv to capture our gesture image and translate to the CNN to decide which gesture are we showing and what function should reach out base on the image it get. It is a way to achieve hand gestures since the Resberry pi we are going to use is also good with Python. [4]
+
+#### Install OpenCV 4 on your Raspberry Pi
+A guidline on how to install opencv on the Resberry Pi to do image detection, and set the environment for the board to run correctly.[5]
 
 ### 4. Technical Approach and Implemenetation
 ### 5. Analysis
@@ -39,4 +46,6 @@ This prior work focuses on building a robust part-based hand gesture recognition
 
 [3] Zhou Ren, Junsong Yuan, Member, IEEE, Jingjing Meng, Member, IEEE, and Zhengyou Zhang, Fellow, IEEE "Robust Part-Based Hand Gesture Recognition Using Kinect Sensor" IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 15, NO. 5, AUGUST 2013
 
+[4] "Training a Neural Network to Detect Gestures with OpenCV in Python", Brenner Heintz, December 18, 2018
 
+[5] "Install OpenCV 4 on your Raspberry Pi", Adrian Rosebrock, September 26, 2018
