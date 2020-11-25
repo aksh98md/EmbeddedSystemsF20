@@ -35,7 +35,7 @@ The trained model used Opencv to capture our gesture image and translate to the 
 A guidline on how to install opencv on the Resberry Pi to do image detection, and set the environment for the board to run correctly.[5]
 
 ### 4. Technical Approach and Implemenetation
-##Why Raspberry Pie and Arduino?
+#### Why Raspberry Pie and Arduino?
 Arduino is a microcontroller, it does not run an operating system but it is power efficient. Raspberry Pie is a full computer, we set up our arduino in the Raspberry Pi. Combined together, raspberry pie offers a friendly environment for developing code, while Arduino handles precise real-time control of the motors.
 
 ### 5. Analysis
