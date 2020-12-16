@@ -41,9 +41,6 @@ Arduino is a microcontroller, it does not run an operating system but it is powe
 
 ### 5. Hardware set up 
 #### Raspberry Pie
-![alt text](https://www.raspberrypi.org/homepage-9df4b/static/eef5d5d91acb34be0d7443b02cece1d1/8924f/8c67a3e02f41441dae98f8b91c792c1e1b4afef1_770a5842.jpg)
-
-
 <span style="font-size: 0.75em">
     <img alt="Photo from www.raspberrypi.org" src="https://www.raspberrypi.org/homepage-9df4b/static/eef5d5d91acb34be0d7443b02cece1d1/8924f/8c67a3e02f41441dae98f8b91c792c1e1b4afef1_770a5842.jpg">
 </span>
