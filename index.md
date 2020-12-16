@@ -11,7 +11,7 @@ working, methods to improve workflow through human computer interaction can be e
 The device is composed of four components: the main personal computer, Raspberry Pi, Arduino Nano 33 BLE Sense, and a USB web camera. The following figure below demonstrates the interaction between them:
 
 ![alt text](https://user-images.githubusercontent.com/73715503/98816959-62ed9900-2464-11eb-850f-447bb0f56d50.PNG)
-<img alt="Photo " src="www.raspberrypi.org">
+
 
 The Raspberry Pi acts as a central control for the system, and the web camera and Arduino are connected to the Raspberry Pi to feed inputs into it. The Raspberry Pi takes in the continuous video stream of the web camera and sensor data and continuously runs static image recognition with OpenCV. This is done locally to reduce the processing load on the PC and prevent any heavy network usage when unneeded. Sensors on the Arduino are used to assist with the gesture controls, most importantly preventing false positives in triggering of recognition, which can be activated through the detection of a hand with the proximity sensor or a voice activated method, which would require an either an outgoing internet connection to call voice recognition APIs or be performed locally. 
 
@@ -42,6 +42,13 @@ Arduino is a microcontroller, it does not run an operating system but it is powe
 ### 5. Hardware set up 
 #### Raspberry Pie
 ![alt text](https://www.raspberrypi.org/homepage-9df4b/static/eef5d5d91acb34be0d7443b02cece1d1/8924f/8c67a3e02f41441dae98f8b91c792c1e1b4afef1_770a5842.jpg)
+
+
+<span style="font-size: 0.75em">
+    <img alt="Photo from www.raspberrypi.org" src="https://www.raspberrypi.org/homepage-9df4b/static/eef5d5d91acb34be0d7443b02cece1d1/8924f/8c67a3e02f41441dae98f8b91c792c1e1b4afef1_770a5842.jpg">
+</span>
+
+
 Raspberry Pi is a single board computer that has an ARMv6 700 MHz single-core processor, a VideoCore IV GPU and 512MB of RAM. For data storage and operating system, it uses an SC card. The OS installer used for our RPi3 was New Out Of Box Software (NOOBS), which allowed us to install a working Operatins System. The working OS that we isntalled is is Raspbian, which is a lightweight linux OS based on Debian. The Raspberry Pi used for this project isRaspberry Pi 3 Model B+ (RPi3). [6] Although it is possible for a 64-bit operating system to be installed in our RPi3, the 32-bit operating system was used, as it is also the OS that the RPi3 chooses by default. The 64-bit operatin system could have been installed later, but the 32-bit seemed to work fine. The benefit of having a 64-bit operatin system is that the OS can access 264 memory addresses, which is 18-Quintillion bytes of RAM, more than 4 GB of RAM. [7] A 64-bit processor will store more computational values and handle more data at once when compared to a 32-bit processor. This means that it will access more than four billion times the physical memory of a 32-bit processor. [8]
 
 Our team opted to use Python for our learning algorithm, hence we installed Python 3 in our Raspberry Pi. Tensorflow occupies about 1 GB of our microSD cards, and it is a library whos main focus is deep learning. Because this library consumes a large amount of resources, executing tensorflow in our Raspberry Pi can be slow and it should not be expected to get fast results. Our small embedded device is only be able to deploy the most common models. According to qengineeding.eu, it will not be possible to train new models, or perform transfer learning. They advice to run pre-built deep learning models, conver frozen TensorFlow models to TensorFlow Lite flat buffer models.[9]
