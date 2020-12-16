@@ -38,7 +38,45 @@ A guidline on how to install opencv on the Resberry Pi to do image detection, an
 #### Why Raspberry Pie and Arduino?
 Arduino is a microcontroller, it does not run an operating system but it is power efficient. Raspberry Pie is a full computer, we set up our arduino in the Raspberry Pi. Combined together, raspberry pie offers a friendly environment for developing code, while Arduino handles precise real-time control of the motors.
 
+### 5. Hardware set up 
+#### Raspberry Pie
+Raspberry Pi is a single board computer that has an ARMv6 700 MHz single-core processor, a VideoCore IV GPU and 512MB of RAM. For data storage and operating system, it uses an SC card. The OS installer used for our RPi3 was New Out Of Box Software (NOOBS), which allowed us to install a working Operatins System. The working OS that we isntalled is is Raspbian, which is a lightweight linux OS based on Debian. The Raspberry Pi used for this project isRaspberry Pi 3 Model B+ (RPi3). [6] Although it is possible for a 64-bit operating system to be installed in our RPi3, the 32-bit operating system was used, as it is also the OS that the RPi3 chooses by default. The 64-bit operatin system could have been installed later, but the 32-bit seemed to work fine. The benefit of having a 64-bit operatin system is that the OS can access 264 memory addresses, which is 18-Quintillion bytes of RAM, more than 4 GB of RAM. [7] A 64-bit processor will store more computational values and handle more data at once when compared to a 32-bit processor. This means that it will access more than four billion times the physical memory of a 32-bit processor. [8]
+
+Our team opted to use Python for our learning algorithm, hence we installed Python 3 in our Raspberry Pi. Tensorflow occupies about 1 GB of our microSD cards, and it is a library whos main focus is deep learning. Because this library consumes a large amount of resources, executing tensorflow in our Raspberry Pi can be slow and it should not be expected to get fast results. Our small embedded device is only be able to deploy the most common models. According to qengineeding.eu, it will not be possible to train new models, or perform transfer learning. They advice to run pre-built deep learning models, conver frozen TensorFlow models to TensorFlow Lite flat buffer models.[9]
+
+Our group worked on the hardware enviroment set up individually, therefore the Tensorflow version installed in our Raspberry Pies were 2.1 and 2.3. The instroduced some challenges, as our model was trained in version 2.3.1 and hence, some adjustements had to be done in order to ensure the model would predict in our Raspberry Pies. Tensorflow open-source software library has evolved and become quite large, therefore building it  on a simple 32-bit machine has become a difficult task. Rhaspberry Pi offers a faster and smaller version of Tensorflow, TensorFlow Lite, it uses less resources as it is designed for smalle computers. We opted for the normal Tensorflow library, since it was beneficial to perform training in our labtops for higher accuracy and speed purposes. Since our trainind was done in our labtops, our training model json file had to be modified in order to work on out rhaspberry pi. The modification to the rhaspberry pie would not have been necessay had we had the same version of tensorlow, but as we had to work distanced, our final hardware enviroments were set up differently. (discuss more of the saveModelArch.py)
+
+
+#### Specifications
+The Raspberry Pi 3 Model B+:
+1.  Broadcom BCM2837B0, Cortex-A53 (ARMv8) 64-bit SoC @ 1.4GHz
+2.  1GB LPDDR2 SDRAM
+3.  2.4GHz and 5GHz IEEE 802.11.b/g/n/ac wireless LAN, Bluetooth 4.2, BLE
+4.  Gigabit Ethernet over USB 2.0 (maximum throughput 300 Mbps)
+5.  Extended 40-pin GPIO header
+6.  Full-size HDMI
+7.  4 USB 2.0 ports
+8.  CSI camera port for connecting a Raspberry Pi camera
+9.  DSI display port for connecting a Raspberry Pi touchscreen display
+10. 4-pole stereo output and composite video port
+11. Micro SD port for loading your operating system and storing data
+12. 5V/2.5A DC power input
+13. Power-over-Ethernet (PoE) support (requires separate PoE HAT)
+
+
+
+#### Arduino
+
 ### 5. Analysis
+#### Opencv
+#### Tensorflow
+To install TensorFlow, instead of installing from scratch, we used a short-cut provided by qengineering.edu. The installation process uses a Google software installer called Bazel, which generates a wheel. A Bazel is an open source build/test tool, it can be comparable to Make, Mave, and Graddle. Bazeil is a highlevel build ldanuge that "supports projects multiple languages and builds outputs for multiple platforms". [12] A wheel is part of the Python ecosystem and helps make isntallations faster stable in the package distribution process. [11] If we had opted for installing TensorFlow from scratch in the Rpi3, the process would have taken many hours and we would have generated many intermediate files that would have taken to much spaced in the SD memory card. [9]
+
+
+#### Python image recognition
+#### Code algorithm
+
+
 ### 6. Conclusion and Future Works
 ### 7. Contributions
 ### 8. References
@@ -52,3 +90,17 @@ Arduino is a microcontroller, it does not run an operating system but it is powe
 [4] "Training a Neural Network to Detect Gestures with OpenCV in Python", Brenner Heintz, December 18, 2018
 
 [5] "Install OpenCV 4 on your Raspberry Pi", Adrian Rosebrock, September 26, 2018
+
+[6] http://meseec.ce.rit.edu/551-projects/spring2017/2-3.pdf
+
+[7] https://www.geeksforgeeks.org/difference-32-bit-64-bit-operating-systems
+
+[8] https://www.digitaltrends.com/computing/32-bit-vs-64-bit-operating-systems/
+
+[9] https://qengineering.eu/install-tensorflow-2.2.0-on-raspberry-pi-4.html
+
+[10] https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
+
+[11] https://realpython.com/python-wheels/
+
+[12] https://www.bazel.build/
