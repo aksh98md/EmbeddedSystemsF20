@@ -11,6 +11,7 @@ working, methods to improve workflow through human computer interaction can be e
 The device is composed of four components: the main personal computer, Raspberry Pi, Arduino Nano 33 BLE Sense, and a USB web camera. The following figure below demonstrates the interaction between them:
 
 ![alt text](https://user-images.githubusercontent.com/73715503/98816959-62ed9900-2464-11eb-850f-447bb0f56d50.PNG)
+<img alt="Photo " src="www.raspberrypi.org">
 
 The Raspberry Pi acts as a central control for the system, and the web camera and Arduino are connected to the Raspberry Pi to feed inputs into it. The Raspberry Pi takes in the continuous video stream of the web camera and sensor data and continuously runs static image recognition with OpenCV. This is done locally to reduce the processing load on the PC and prevent any heavy network usage when unneeded. Sensors on the Arduino are used to assist with the gesture controls, most importantly preventing false positives in triggering of recognition, which can be activated through the detection of a hand with the proximity sensor or a voice activated method, which would require an either an outgoing internet connection to call voice recognition APIs or be performed locally. 
 
