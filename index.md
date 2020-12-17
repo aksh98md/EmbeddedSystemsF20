@@ -98,45 +98,45 @@ Our project makes use of the OpenCV and Tensor flow libraries in Python. A descr
 #### Code algorithm for Raspberry Pi
 Pseudo code for the algorithm that runs in the Raspberry Pi 3:
 
- Use pygame to build a prediction window
+    Use pygame to build a prediction window
 
- Intialize a window or screen for display 
+    Intialize a window or screen for display 
 
- Read the trained model
+    Read the trained model
 
-    Load a json file suing json.load()
+        Load a json file suing json.load()
     
-    Load weights on the loaded model using a .h5 file, which contains multidimensional arrays of scientific data.
+        Load weights on the loaded model using a .h5 file, which contains multidimensional arrays of scientific data.
     
- CAmpture first image using USB camera
+    Capture first image using USB camera
 
- Adjust the threshold variable for binarization using openCV globa variable cv2.THRESH_BINARY 
+    Adjust the threshold variable for binarization using openCV globa variable cv2.THRESH_BINARY 
 
- If pixel intensity is greater than the set threshold, value set to 255, else set to 0 (black).
+    If pixel intensity is greater than the set threshold, value set to 255, else set to 0 (black).
 
 
- in a loop:
+    In a loop:
 
-    read frame of picture using the cap.read() method from openCV library
+        read frame of picture using the cap.read() method from openCV library
     
-    display image using cv2.rectable() method, it takes in the image, start_point coordinate, end_point coordinate, color in form of a tuple, and thickness
-    handle region on interest
+        display image using cv2.rectable() method, it takes in the image, start_point coordinate, end_point coordinate, color in form of a tuple, and thickness
+        handle region on interest
     
-        resize and change color to greyscale using cv2.resize() and cv2.cvtColor()
+            resize and change color to greyscale using cv2.resize() and cv2.cvtColor()
         
-        make black and white for better predition 
+            make black and white for better predition 
         
-        In this binarization
+            In this binarization
         
-            if the grey scale value is greater than the set-threshold-value, we set the color to the maximun grey (white)
+                if the grey scale value is greater than the set-threshold-value, we set the color to the maximun grey (white)
             
-            if the value is less than the set-threshold-value, we set colot to zero (black)
+                if the value is less than the set-threshold-value, we set colot to zero (black)
             
-    resize resulting image
+        resize resulting image
     
-    predict using the model.predict() method 
+        predict using the model.predict() method 
 
-    sort for printing
+        sort for printing
  
  
 Explanation to some of the main functions used from openCV library are:
