@@ -71,7 +71,34 @@ The Raspberry Pi 3 Model B+:
 
 
 #### Arduino
+
 (to-do)
+
+#### Specifications
+Arduino NANO 33 BLE
+1. Microcontroller	nRF52840 (datasheet)
+2. Operating Voltage	3.3V
+3. Input Voltage (limit)	21V
+4. DC Current per I/O Pin	15 mA
+5. Clock Speed	64MHz
+6. CPU Flash Memory	1MB (nRF52840)
+7. SRAM	256KB (nRF52840)
+8. EEPROM	none
+9. Digital Input / Output Pins	14
+10. PWM Pins	all digital pins
+11. UART	1
+12. SPI	1
+13. I2C	1
+14. Analog Input Pins	8 (ADC 12 bit 200 ksamples)
+15. Analog Output Pins	Only through PWM (no DAC)
+16. External Interrupts	all digital pins
+17. LED_BUILTIN	13
+18. USB	Native in the nRF52840 Processor
+19. IMU	LSM9DS1 (datasheet)
+20. Length	45 mm
+21. Width	18 mm
+22. Weight	5 gr (with headers)
+
 
 ### 6. Analysis
 Computer vision is a fast growing field. Applications in computer vision focuses on analysing amagery data to understand past events, and in most cases they use that understanding to predict future events. Due to the high demand of powerful hardware and software for computer vision, programming languages now offer a great range of libraries to support the process. One of the great challenges of computer vision is the high demand in computational power, as  the computer vision process requires high power for both image process and computation. According to algorithmia.com, one of the most popular languages for Aritificial intelligence applications is Python, but there are also other programs such as R, Java, Scala, and Rust. The reason why Python is one of the most popular programming languages for computer vision is that they have the most user friendly syntax, largest libraries and frameworks, dynamic applicability to a large amount of AI algorithms, and is very simple to read and write. [13] Some application areas for computer visions technology are video surveillance, biometrics, automotive, photography, movie production, Web search, medicine, augmented reality gaming, new user interfaces, and many more. [15]
@@ -84,18 +111,18 @@ Even though developers are not directly interacting with GIL when developing com
 After discussing the python memory management model, one may wonder why use python for computer vision purposes if it has such a big impact on efficiency? As discussed in the later sections, Python, while also being a clear and syntax friendly high level language, offers different libraries for machine learning, tensor flow, neural networks, and other artificial intelligence applications. Although computing power is essential in these applications, the big tradeoff is simplicity for writting code and libraries that are essential tools for applications such as our hand gesture recognition system. 
 
 
-#### Opencv
+#### OpenCV
 OpenCV stands for Open Source Computer Vision Library, its applications are mainly for computer vision and machine learning purposes. Accorging to opencv.org, the library offers mroe than 2500 obtimized algorithms. The set of algorithms offered by openCV can be applied "to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract 3D models of objects, produce 3D point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar, images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality". [16] Becuase of the broad offereing of openCV, we decided to use this popular set of libraries for our gesture based embedded system, which aims to detect hand gestures to trigger desired behaviour in our computer. 
 
 
-#### Tensorflow
+#### TensorFlow
 To install TensorFlow, instead of installing from scratch, we used a short-cut provided by qengineering.edu. The installation process uses a Google software installer called Bazel, which generates a wheel. A Bazel is an open source build/test tool, it can be comparable to Make, Mave, and Graddle. Bazeil is a highlevel build ldanuge that "supports projects multiple languages and builds outputs for multiple platforms". [12] A wheel is part of the Python ecosystem and helps make isntallations faster stable in the package distribution process. [11] If we had opted for installing TensorFlow from scratch in the Rpi3, the process would have taken many hours and we would have generated many intermediate files that would have taken to much spaced in the SD memory card. [9]
 
 
-#### Python image recognition
+#### Python Image Recognition
 Our project makes use of the OpenCV and Tensor flow libraries in Python. A description of each algorithm is described next.
 
-#### Code algorithm for Raspberry Pi
+#### Code Algorithm for Raspberry Pi
 Pseudo code for the algorithm that runs in the Raspberry Pi 3:
 
     Use pygame to build a prediction window
@@ -151,20 +178,24 @@ cv2.cvtColor()
 This method produces an image in black and white, which allows for better prediction. Accoring to "Color-to-Grayscale: Does the Method Matter in Image Recognition?", the main reason to use grayscale is to extract descriptors instead of operating in color images, the effect is simplification of algorithm and reduction of computation. [17]
 
 cv2.resize()
+
 This method scales the image being analized in each loop. This reduces the number of pixels from an image, which helps reduce the time of training a model. This is becuase, if training using neural networks for example, there is less number of input nodes that would have otherwise increased the complecity of the model. This may also be necessary to meet size requirement by a method, and openCV offers interpolation methods to resize an image. [18]
 
 cv2.away(time_value) 
 
 This method waits for a key event. It is due to Python's implementation of switching "threads" (as discussed in the python section) and it is necessary to process the event loop. If this method is not called, other main events, such as redraw, resize, and input event will not be called. [19]
 
-After describing the process for training input, one can see that  a black background may increase the quality of our predictions.
+Note: After describing the process for training input, one can see that  a black background may increase the quality of our predictions.
 
-#### Code algorithm for training in Labtop
+#### Code Algorithm for Training in Labtop
 The initial part of the code will be similar to the one ran in the raspberry pi, as we initially take video input using the labtop camera.
+
 (to-do)
 
 ### 6 Conclusion and Future Works
 Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry pi collected image recognition from the USC video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our labtops and then transfering that model to our raspberry pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
+
+There is always ways to make interfaces more user friendly and effective. For this project, future works can involve more options for hand gestures, which would give more functionality to the system. Additionally, improving the algorithm to make it faster at detecting hand gestures would be beneficial to the system.
 
 ### 7. Contributions
 ### 8. References
