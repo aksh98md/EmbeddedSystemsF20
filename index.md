@@ -102,18 +102,32 @@ Our project consisted of a gesture based embedded system that acted as an assist
 ### 8. References
 
 [1] C.J. Cohen, G. Beach, G. Foulk "A basic hand gesture control system for PC applications"  Proceedings 30th Applied Imagery Pattern Recognition Workshop (AIPR 2001). Analysis and Understanding of Time Varying Imagery
+
 [2] "Arduino based Hand Gesture Control of Your Computer" Electronics Hub, October 06, 2019
+
 [3] Zhou Ren, Junsong Yuan, Member, IEEE, Jingjing Meng, Member, IEEE, and Zhengyou Zhang, Fellow, IEEE "Robust Part-Based Hand Gesture Recognition Using Kinect Sensor" IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 15, NO. 5, AUGUST 2013
+
 [4] "Training a Neural Network to Detect Gestures with OpenCV in Python", Brenner Heintz, December 18, 2018
+
 [5] "Install OpenCV 4 on your Raspberry Pi", Adrian Rosebrock, September 26, 2018
+
 [6] http://meseec.ce.rit.edu/551-projects/spring2017/2-3.pdf
+
 [7] https://www.geeksforgeeks.org/difference-32-bit-64-bit-operating-systems
+
 [8] https://www.digitaltrends.com/computing/32-bit-vs-64-bit-operating-systems/
+
 [9] https://qengineering.eu/install-tensorflow-2.2.0-on-raspberry-pi-4.html
+
 [10] https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
+
 [11] https://realpython.com/python-wheels/
+
 [12] https://www.bazel.build/
+
 [13] https://algorithmia.com/blog/the-best-ai-programming-languages-to-use#:~:text=Rust-,Python,is%20relatively%20simple%20to%20write.
+
 [15] Pulli, Kari "Realtime Computer Vision with OpenCV" AMCQUEUE, 2012
+
 [16] https://opencv.org/about/
 
