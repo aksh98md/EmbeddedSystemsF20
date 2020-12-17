@@ -125,7 +125,7 @@ Our project consisted of a gesture based embedded system that acted as an assist
 
 [12] https://www.bazel.build/
 
-[13] https://algorithmia.com/blog/the-best-ai-programming-languages-to-use#:~:text=Rust-,Python,is%20relatively%20simple%20to%20write.
+[13] https://algorithmia.com
 
 [15] Pulli, Kari "Realtime Computer Vision with OpenCV" AMCQUEUE, 2012
 
