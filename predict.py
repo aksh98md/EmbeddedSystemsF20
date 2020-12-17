@@ -105,16 +105,3 @@ model_json = model.to_json()
 with open("model_trained.json", "w") as json_file:
     json.dump(model_json, json_file)
 model.save("model_trained.h5")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
