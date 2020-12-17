@@ -192,7 +192,7 @@ This method waits for a key event. It is due to Python's implementation of switc
 Note: After describing the process for training input, one can see that  a black background may increase the quality of our predictions.
 
 #### Code Algorithm for Training in Laptop
-The initial part of the code will be similar to the one ran in the raspberry pi, as we initially take video input using the laptop camera.
+The initial part of the code will be similar to the one ran in the Raspberry Pi, as we initially take video input using the laptop camera.
 
 For the training data, instead of using the resource on the Internet, we take pictures of our own hand instead. We have 8 types of hand gesture and each of them take roughly 2500 each for the training. The type of the gestures we use are shown below:
 
@@ -203,7 +203,7 @@ Conv2D is a multi-dimensional array that that is used to map the charateristic a
 
 train_model_result.PNG
 
-Before sending the detect_image signal to the raspberry pi, we also need to test our model in the test.py file. Once the webcam has detect a gesture, the model will detect which gesture is it and show 1.0 to the gesture it thinks has the highest possiblity to be the right answer. Our result is shown below and is quite accurate:
+Before sending the detect_image signal to the Raspberry Pi, we also need to test our model in the test.py file. Once the webcam has detect a gesture, the model will detect which gesture is it and show 1.0 to the gesture it thinks has the highest possiblity to be the right answer. Our result is shown below and is quite accurate:
 
 predict_result.PNG
 
@@ -213,7 +213,7 @@ Now we are able to work with the hardware part.
 Add things here.
 
 ### 7. Conclusion and Future Works
-Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry pi collected image recognition from the USC video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our laptops and then transfering that model to our raspberry pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
+Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry pi collected image recognition from the USB video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our laptops and then transfering that model to our Raspberry Pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
 
 There is always ways to make interfaces more user friendly and effective. For this project, future works can involve more options for hand gestures, which would give more functionality to the system. Additionally, improving the algorithm to make it faster at detecting hand gestures would be beneficial to the system.
 
