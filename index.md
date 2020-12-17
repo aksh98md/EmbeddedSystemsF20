@@ -120,6 +120,7 @@ Pseudo code for the algorithm that runs in the Raspberry Pi 3:
         read frame of picture using the cap.read() method from openCV library
     
         display image using cv2.rectable() method, it takes in the image, start_point coordinate, end_point coordinate, color in form of a tuple, and thickness
+        
         handle region on interest
     
             resize and change color to greyscale using cv2.resize() and cv2.cvtColor()
