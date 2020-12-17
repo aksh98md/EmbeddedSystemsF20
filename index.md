@@ -71,6 +71,7 @@ The Raspberry Pi 3 Model B+:
 
 
 #### Arduino
+(to-do)
 
 ### 6. Analysis
 Computer vision is a fast growing field. Applications in computer vision focuses on analysing amagery data to understand past events, and in most cases they use that understanding to predict future events. Due to the high demand of powerful hardware and software for computer vision, programming languages now offer a great range of libraries to support the process. One of the great challenges of computer vision is the high demand in computational power, as  the computer vision process requires high power for both image process and computation. According to algorithmia.com, one of the most popular languages for Aritificial intelligence applications is Python, but there are also other programs such as R, Java, Scala, and Rust. The reason why Python is one of the most popular programming languages for computer vision is that they have the most user friendly syntax, largest libraries and frameworks, dynamic applicability to a large amount of AI algorithms, and is very simple to read and write. [13] Some application areas for computer visions technology are video surveillance, biometrics, automotive, photography, movie production, Web search, medicine, augmented reality gaming, new user interfaces, and many more. [15]
@@ -92,10 +93,54 @@ To install TensorFlow, instead of installing from scratch, we used a short-cut p
 
 
 #### Python image recognition
-#### Code algorithm
+Our project makes use of the OpenCV and Tensor flow libraries in Python. A description of each algorithm is described next.
 
+#### Code algorithm for Raspberry Pi
+Pseudo code for the algorithm that runs in the Raspberry Pi 3:
+Use pygame to build a prediction window
+Intialize a window or screen for display 
+Read the trained model
+    Load a json file suing json.load()
+    Load weights on the loaded model using a .h5 file, which contains multidimensional arrays of scientific data.
+CAmpture first image using USB camera
+Adjust the threshold variable for binarization using openCV globa variable cv2.THRESH_BINARY 
+If pixel intensity is greater than the set threshold, value set to 255, else set to 0 (black).
 
-### 6. Conclusion and Future Works
+in a loop:
+    read frame of picture using the cap.read() method from openCV library
+    display image using cv2.rectable() method, it takes in the image, start_point coordinate, end_point coordinate, color in form of a tuple, and thickness
+    handle region on interest
+        resize and change color to greyscale using cv2.resize() and cv2.cvtColor()
+        make black and white for better predition 
+        In this binarization
+            if the grey scale value is greater than the set-threshold-value, we set the color to the maximun grey (white)
+            if the value is less than the set-threshold-value, we set colot to zero (black)
+    resize resulting image
+    predict using the model.predict() method 
+    sort for printing
+ 
+ 
+Explanation to some of the main functions used from openCV library are:
+
+cv2.read() 
+This method grabs, decodes and returns the next video frame. It does not take arguments and instead it gets called by the created image object. If anything goes wrong with this method call, the method returns false. 
+
+cv2.cvtColor()
+This method produces an image in black and white, which allows for better prediction. Accoring to "Color-to-Grayscale: Does the Method Matter in Image Recognition?", the main reason to use grayscale is to extract descriptors instead of operating in color images, the effect is simplification of algorithm and reduction of computation. [17]
+
+cv2.resize()
+This method scales the image being analized in each loop. This reduces the number of pixels from an image, which helps reduce the time of training a model. This is becuase, if training using neural networks for example, there is less number of input nodes that would have otherwise increased the complecity of the model. This may also be necessary to meet size requirement by a method, and openCV offers interpolation methods to resize an image. [18]
+
+cv2.away(time_value) 
+This method waits for a key event. It is due to Python's implementation of switching "threads" (as discussed in the python section) and it is necessary to process the event loop. If this method is not called, other main events, such as redraw, resize, and input event will not be called. [19]
+
+After describing the process for training input, one can see that  a black background may increase the quality of our predictions.
+
+#### Code algorithm for training in Labtop
+The initial part of the code will be similar to the one ran in the raspberry pi, as we initially take video input using the labtop camera.
+(to-do)
+
+### 6 Conclusion and Future Works
 Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry pi collected image recognition from the USC video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our labtops and then transfering that model to our raspberry pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
 
 ### 7. Contributions
@@ -130,4 +175,11 @@ Our project consisted of a gesture based embedded system that acted as an assist
 [15] Pulli, Kari "Realtime Computer Vision with OpenCV" AMCQUEUE, 2012
 
 [16] https://opencv.org/about/
+
+[17] Kanan, Christopher "Color-to-Grayscale: Does the Method Matter in Image Recognition?". PLOS ONE. January 10, 2012. 
+
+[18] https://www.geeksforgeeks.org/image-resizing-using-opencv-python/
+
+[19] https://docs.opencv.org/2.4/modules/highgui/doc/user_interface.html?highlight=waitkey#waitkey
+
 
