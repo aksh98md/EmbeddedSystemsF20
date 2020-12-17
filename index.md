@@ -196,7 +196,7 @@ The initial part of the code will be similar to the one ran in the Raspberry Pi,
 
 For the training data, instead of using the resource on the Internet, we take pictures of our own hand instead. We have 8 types of hand gesture and each of them take roughly 2500 each for the training. The type of the gestures we use are shown below:
 
-data.PNG
+![alt text](https://raw.githubusercontent.com/aksh98md/EmbeddedSystemsF20/gh-pages/data.PNG)
 
 After the data are trained, next step is to train the model. Here, we use the 2D convolution nerual network.
 Conv2D is a multi-dimensional array that that is used to map the charateristic and classify them into different type to do recognition, after the mapping is done, MaxPooling2D will be use to simplify the calculation in the convolution layer. Then we will transform the result into an one-dimensional array with Flattern function, and Dense function to do the classification. There is also a Dropout function to avoid overfitting. Once all the step are done, we will save the trained weights into a h5 file and a json file. Now, the training model is complete, we can see that the accuracy of our model is roughly 99%.
