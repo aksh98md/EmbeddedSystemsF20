@@ -36,23 +36,23 @@ The trained model used Opencv to capture our gesture image and translate to the 
 A guidline on how to install opencv on the Resberry Pi to do image detection, and set the environment for the board to run correctly.[5]
 
 ### 4. Technical Approach and Implemenetation
-#### Why Raspberry Pie and Arduino?
-Arduino is a microcontroller, it does not run an operating system but it is power efficient. Raspberry Pie is a full computer, we set up our arduino in the Raspberry Pi. Combined together, raspberry pie offers a friendly environment for developing code, while Arduino handles precise real-time control of the motors.
+#### Why Raspberry Pi and Arduino?
+Arduino is a microcontroller, it does not run an operating system but it is power efficient. Raspberry Pi is a full computer, we set up our arduino in the Raspberry Pi. Combined together, Raspberry pi offers a friendly environment for developing code, while Arduino handles precise real-time control of the motors.
 
 ### 5. Hardware set up 
-#### Raspberry Pie
+#### Raspberry Pi
 <span style="font-size: 0.75em">
     <img alt="Photo from www.raspberrypi.org" src="https://www.raspberrypi.org/homepage-9df4b/static/eef5d5d91acb34be0d7443b02cece1d1/8924f/8c67a3e02f41441dae98f8b91c792c1e1b4afef1_770a5842.jpg">
 </span>
 
 
-Raspberry Pi is a single board computer that has an ARMv6 700 MHz single-core processor, a VideoCore IV GPU and 512MB of RAM. For data storage and operating system, it uses an SC card. The OS installer used for our RPi3 was New Out Of Box Software (NOOBS), which allowed us to install a working Operatins System. The working OS that we isntalled is is Raspbian, which is a lightweight linux OS based on Debian. The Raspberry Pi used for this project isRaspberry Pi 3 Model B+ (RPi3). [6] Although it is possible for a 64-bit operating system to be installed in our RPi3, the 32-bit operating system was used, as it is also the OS that the RPi3 chooses by default. The 64-bit operatin system could have been installed later, but the 32-bit seemed to work fine. The benefit of having a 64-bit operatin system is that the OS can access 264 memory addresses, which is 18-Quintillion bytes of RAM, more than 4 GB of RAM. [7] A 64-bit processor will store more computational values and handle more data at once when compared to a 32-bit processor. This means that it will access more than four billion times the physical memory of a 32-bit processor. [8]
+Raspberry Pi is a single board computer that has an ARMv6 700 MHz single-core processor, a VideoCore IV GPU and 512MB of RAM. For data storage and operating system, it uses an SD card. The OS installer used for our RPi3 was New Out Of Box Software (NOOBS), which allowed us to install a working Operatins System. The working OS that we isntalled is Raspbian, which is a lightweight linux OS based on Debian. The Raspberry Pi used for this project is Raspberry Pi 3 Model B+ (RPi3). [6] Although it is possible for a 64-bit operating system to be installed in our RPi3, the 32-bit operating system was used, as it is also the OS that the RPi3 chooses by default. The 64-bit operating system could have been installed later, but the 32-bit seemed to work fine. The benefit of having a 64-bit operatin system is that the OS can access 264 memory addresses, which is 18-Quintillion bytes of RAM, more than 4 GB of RAM. [7] A 64-bit processor will store more computational values and handle more data at once when compared to a 32-bit processor. This means that it will access more than four billion times the physical memory of a 32-bit processor. [8]
 
 Our team opted to use Python for our learning algorithm, hence we installed Python 3 in our Raspberry Pi. Tensorflow occupies about 1 GB of our microSD cards, and it is a library whos main focus is deep learning. Because this library consumes a large amount of resources, executing tensorflow in our Raspberry Pi can be slow and it should not be expected to get fast results. Our small embedded device is only be able to deploy the most common models. According to qengineeding.eu, it will not be possible to train new models, or perform transfer learning. They advice to run pre-built deep learning models, conver frozen TensorFlow models to TensorFlow Lite flat buffer models.[9]
 
 ![alt text](https://raw.githubusercontent.com/aksh98md/EmbeddedSystemsF20/gh-pages/rpi_setup.JPG)
 
-Our group worked on the hardware enviroment set up individually, therefore the Tensorflow version installed in our Raspberry Pi were 2.1 and 2.3. The instroduced some challenges, as our model was trained in version 2.3.1 and hence, some adjustements had to be done in order to ensure the model would predict in our Raspberry Pi. Tensorflow open-source software library has evolved and become quite large, therefore building it  on a simple 32-bit machine has become a difficult task. Rhaspberry Pi offers a faster and smaller version of Tensorflow, TensorFlow Lite, it uses less resources as it is designed for smalle computers. We opted for the normal Tensorflow library, since it was beneficial to perform training in our laptops for higher accuracy and speed purposes. Since our training was done in our laptops, our training model json file had to be serialized in order to work on out rhaspberry pi. To serialize, we use the model structure that is initially saved in a json file, together with the weights of the model saved in .h5 file, and serialize using the data. The modification to the rhaspberry pie would not have been necessary had we had the same version of tensorlow, but as we had to work distanced, our final hardware enviroments were set up differently. 
+Our group worked on the hardware enviroment set up individually, therefore the Tensorflow version installed in our Raspberry Pi were 2.1 and 2.3. That camp up with some challenges, as our model was trained in version 2.3.1 and hence, some adjustements had to be done in order to ensure the model would predict in our Raspberry Pi. Tensorflow open-source software library has evolved and become quite large, therefore building it  on a simple 32-bit machine has become a difficult task. Rhaspberry Pi offers a faster and smaller version of Tensorflow, TensorFlow Lite, it uses less resources as it is designed for smalle computers. We opted for the normal Tensorflow library, since it was beneficial to perform training in our laptops for higher accuracy and speed purposes. Since our training was done in our laptops, our training model json file had to be serialized in order to work on out Raspberry Pi. To serialize, we use the model structure that is initially saved in a json file, together with the weights of the model saved in .h5 file, and serialize using the data. The modification to the Raspberry Pi would not have been necessary had we had the same version of tensorlow, but as we had to work distanced, our final hardware enviroments were set up differently. 
 
 (discuss more of the saveModelArch.py)
 
@@ -105,14 +105,14 @@ Arduino NANO 33 BLE
 
 
 ### 6. Analysis
-Computer vision is a fast growing field. Applications in computer vision focuses on analysing amagery data to understand past events, and in most cases they use that understanding to predict future events. Due to the high demand of powerful hardware and software for computer vision, programming languages now offer a great range of libraries to support the process. One of the great challenges of computer vision is the high demand in computational power, as  the computer vision process requires high power for both image process and computation. According to algorithmia.com, one of the most popular languages for Aritificial intelligence applications is Python, but there are also other programs such as R, Java, Scala, and Rust. The reason why Python is one of the most popular programming languages for computer vision is that they have the most user friendly syntax, largest libraries and frameworks, dynamic applicability to a large amount of AI algorithms, and is very simple to read and write. [13] Some application areas for computer visions technology are video surveillance, biometrics, automotive, photography, movie production, Web search, medicine, augmented reality gaming, new user interfaces, and many more. [15]
+Computer vision is a fast growing field. Applications in computer vision focuses on analysing imagery data to understand past events, and in most cases they use that understanding to predict future events. Due to the high demand of powerful hardware and software for computer vision, programming languages now offer a great range of libraries to support the process. One of the greatest challenges of computer vision is the high demand in computational power, as  the computer vision process requires high power for both image process and computation. According to algorithmia.com, one of the most popular languages for Aritificial intelligence applications is Python, but there are also other programs such as R, Java, Scala, and Rust. The reason why Python is one of the most popular programming languages for computer vision is that they have the most user friendly syntax, largest libraries and frameworks, dynamic applicability to a large amount of AI algorithms, and is very simple to read and write. [13] Some application areas for computer visions technology are video surveillance, biometrics, automotive, photography, movie production, Web search, medicine, augmented reality gaming, new user interfaces, and many more. [15]
 
 #### Python
-The language used in this project is Python. One of the main reasons why computer vision may be slow in Python is that Python has a global interpreter lock (GIL), a mutex/lock that every thread must acquire before they execute code. The reason for the global interpreter pointer is that python's memory management depends on reference counting. The reference counting keeps track of how many references there are to any memory location at all times. To avoid race conditions, the python designers decided to add the global interpreter lock to their design. 
+The language used in this project is Python. One of the main reasons why computer vision may be shown in Python is that Python has a global interpreter lock (GIL), a mutex/lock that every thread must acquire before they execute code. The reason for the global interpreter pointer is that python's memory management depends on reference counting. The reference counting keeps track of how many references there are to any memory location at all times. To avoid race conditions, the python designers decided to add the global interpreter lock to their design. 
 
 Even though developers are not directly interacting with GIL when developing computer vision software, GIL can become a performance bottleneck when running multi-threaded code. Whenever we add references, this counter increments or decrements. An example of the problem with this implementation is that if we try to increment local variables, we first need the semaphore lock for the memory location, hence, executing code will be to slow. To avoid race conditions on the reference counter, we always have only one thread running at a time. The second reason for this lock is that in Python, many of the libraries are accessing C libraries, which were not created with thread safety in mind. Since we indirectly use these C libraries, Python code will not always be thread safe. Therefore, we have just one thread running at once and that give marely an illusion of multi-threaded programs in Python. Multithreading in computer vision is essential, as computer vision requires a vast amount of computation. As a consequence being able to access C code in python, the single-threaded code in python can be very fast, since the memory management model is simple and has this global interpreter. The trade off is that multi-threaded programs in in Python are not realistically running multiple-threads.
 
-After discussing the python memory management model, one may wonder why use python for computer vision purposes if it has such a big impact on efficiency? As discussed in the later sections, Python, while also being a clear and syntax friendly high level language, offers different libraries for machine learning, tensor flow, neural networks, and other artificial intelligence applications. Although computing power is essential in these applications, the big tradeoff is simplicity for writting code and libraries that are essential tools for applications such as our hand gesture recognition system. 
+After discussing the python memory management model, one may wonder why use python for computer vision purposes if it has such a big impact on efficiency? As discussed in the later sections, Python, while also being a clear and syntax friendly high level language, offers different libraries for machine learning, tensorflow, neural networks, and other artificial intelligence applications. Although computing power is essential in these applications, the big tradeoff is simplicity for writting code and libraries that are essential tools for applications such as our hand gesture recognition system. 
 
 
 #### OpenCV
@@ -124,7 +124,7 @@ To install TensorFlow, instead of installing from scratch, we used a short-cut p
 
 
 #### Python Image Recognition
-Our project makes use of the OpenCV and Tensor flow libraries in Python. A description of each algorithm is described next.
+Our project makes use of the OpenCV and Tensorflow libraries in Python. A description of each algorithm is described next.
 
 #### Code Algorithm for Raspberry Pi
 Pseudo code for the algorithm that runs in the Raspberry Pi 3:
@@ -194,15 +194,31 @@ Note: After describing the process for training input, one can see that  a black
 #### Code Algorithm for Training in Laptop
 The initial part of the code will be similar to the one ran in the raspberry pi, as we initially take video input using the laptop camera.
 
-(to-do)
+For the training data, instead of using the resource on the Internet, we take pictures of our own hand instead. We have 8 types of hand gesture and each of them take roughly 2500 each for the training. The type of the gestures we use are shown below:
 
-### 6 Conclusion and Future Works
+data.PNG
+
+After the data are trained, next step is to train the model. Here, we use the 2D convolution nerual network.
+Conv2D is a multi-dimensional array that that is used to map the charateristic and classify them into different type to do recognition, after the mapping is done, MaxPooling2D will be use to simplify the calculation in the convolution layer. Then we will transform the result into an one-dimensional array with Flattern function, and Dense function to do the classification. There is also a Dropout function to avoid overfitting. Once all the step are done, we will save the trained weights into a h5 file and a json file. Now, the training model is complete, we can see that the accuracy of our model is roughly 99%.
+
+train_model_result.PNG
+
+Before sending the detect_image signal to the raspberry pi, we also need to test our model in the test.py file. Once the webcam has detect a gesture, the model will detect which gesture is it and show 1.0 to the gesture it thinks has the highest possiblity to be the right answer. Our result is shown below and is quite accurate:
+
+predict_result.PNG
+
+Now we are able to work with the hardware part.
+
+#### Code Algorithm for Raspberry Pi and Arduino
+Add things here.
+
+### 7. Conclusion and Future Works
 Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry pi collected image recognition from the USC video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our laptops and then transfering that model to our raspberry pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
 
 There is always ways to make interfaces more user friendly and effective. For this project, future works can involve more options for hand gestures, which would give more functionality to the system. Additionally, improving the algorithm to make it faster at detecting hand gestures would be beneficial to the system.
 
-### 7. Contributions
-### 8. References
+### 8. Contributions
+### 9. References
 
 [1] C.J. Cohen, G. Beach, G. Foulk "A basic hand gesture control system for PC applications"  Proceedings 30th Applied Imagery Pattern Recognition Workshop (AIPR 2001). Analysis and Understanding of Time Varying Imagery
 
