@@ -74,7 +74,11 @@ The Raspberry Pi 3 Model B+:
 #### Arduino
 
 ### 5. Analysis
+Computer vision is a fast growing field. Applications in computer vision focuses on analysing amagery data to understand past events, and in most cases they use that understanding to predict future events. Due to the high demand of powerful hardware and software for computer vision, programming languages now offer a great range of libraries to support the process. One of the great challenges of computer vision is the high demand in computational power, as  the computer vision process requires high power for both image process and computation. According to algorithmia.com, one of the most popular languages for Aritificial intelligence applications is Python, but there are also other programs such as R, Java, Scala, and Rust. The reason why Python is one of the most popular programming languages for computer vision is that they have the most user friendly syntax, largest libraries and frameworks, dynamic applicability to a large amount of AI algorithms, and is very simple to read and write. [13] Some application areas for computer visions technology are video surveillance, biometrics, automotive, photography, movie production, Web search, medicine, augmented reality gaming, new user interfaces, and many more. [15]
+
 #### Opencv
+
+
 #### Tensorflow
 To install TensorFlow, instead of installing from scratch, we used a short-cut provided by qengineering.edu. The installation process uses a Google software installer called Bazel, which generates a wheel. A Bazel is an open source build/test tool, it can be comparable to Make, Mave, and Graddle. Bazeil is a highlevel build ldanuge that "supports projects multiple languages and builds outputs for multiple platforms". [12] A wheel is part of the Python ecosystem and helps make isntallations faster stable in the package distribution process. [11] If we had opted for installing TensorFlow from scratch in the Rpi3, the process would have taken many hours and we would have generated many intermediate files that would have taken to much spaced in the SD memory card. [9]
 
@@ -110,3 +114,8 @@ To install TensorFlow, instead of installing from scratch, we used a short-cut p
 [11] https://realpython.com/python-wheels/
 
 [12] https://www.bazel.build/
+
+[13] https://algorithmia.com/blog/the-best-ai-programming-languages-to-use#:~:text=Rust-,Python,is%20relatively%20simple%20to%20write.
+
+[15] Pulli, Kari "Realtime Computer Vision with OpenCV" AMCQUEUE, 2012
+
