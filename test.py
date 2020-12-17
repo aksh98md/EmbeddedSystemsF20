@@ -92,16 +92,3 @@ while True:
 pygame.quit()
 cap.release()
 cv2.destroyAllWindows()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
