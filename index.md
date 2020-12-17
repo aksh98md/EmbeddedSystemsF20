@@ -98,24 +98,24 @@ Our project makes use of the OpenCV and Tensor flow libraries in Python. A descr
 #### Code algorithm for Raspberry Pi
 Pseudo code for the algorithm that runs in the Raspberry Pi 3:
 
-Use pygame to build a prediction window
+ Use pygame to build a prediction window
 
-Intialize a window or screen for display 
+ Intialize a window or screen for display 
 
-Read the trained model
+ Read the trained model
 
     Load a json file suing json.load()
     
     Load weights on the loaded model using a .h5 file, which contains multidimensional arrays of scientific data.
     
-CAmpture first image using USB camera
+ CAmpture first image using USB camera
 
-Adjust the threshold variable for binarization using openCV globa variable cv2.THRESH_BINARY 
+ Adjust the threshold variable for binarization using openCV globa variable cv2.THRESH_BINARY 
 
-If pixel intensity is greater than the set threshold, value set to 255, else set to 0 (black).
+ If pixel intensity is greater than the set threshold, value set to 255, else set to 0 (black).
 
 
-in a loop:
+ in a loop:
 
     read frame of picture using the cap.read() method from openCV library
     
