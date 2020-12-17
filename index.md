@@ -77,6 +77,7 @@ The Raspberry Pi 3 Model B+:
 Computer vision is a fast growing field. Applications in computer vision focuses on analysing amagery data to understand past events, and in most cases they use that understanding to predict future events. Due to the high demand of powerful hardware and software for computer vision, programming languages now offer a great range of libraries to support the process. One of the great challenges of computer vision is the high demand in computational power, as  the computer vision process requires high power for both image process and computation. According to algorithmia.com, one of the most popular languages for Aritificial intelligence applications is Python, but there are also other programs such as R, Java, Scala, and Rust. The reason why Python is one of the most popular programming languages for computer vision is that they have the most user friendly syntax, largest libraries and frameworks, dynamic applicability to a large amount of AI algorithms, and is very simple to read and write. [13] Some application areas for computer visions technology are video surveillance, biometrics, automotive, photography, movie production, Web search, medicine, augmented reality gaming, new user interfaces, and many more. [15]
 
 #### Opencv
+OpenCV stands for Open Source Computer Vision Library, its applications are mainly for computer vision and machine learning purposes. Accorging to opencv.org, the library offers mroe than 2500 obtimized algorithms. The set of algorithms offered by openCV can be applied "to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract 3D models of objects, produce 3D point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar, images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality". [16] Becuase of the broad offereing of openCV, we decided to use this popular set of libraries for our gesture based embedded system, which aims to detect hand gestures to trigger desired behaviour in our computer. 
 
 
 #### Tensorflow
@@ -92,30 +93,18 @@ To install TensorFlow, instead of installing from scratch, we used a short-cut p
 ### 8. References
 
 [1] C.J. Cohen, G. Beach, G. Foulk "A basic hand gesture control system for PC applications"  Proceedings 30th Applied Imagery Pattern Recognition Workshop (AIPR 2001). Analysis and Understanding of Time Varying Imagery
-
 [2] "Arduino based Hand Gesture Control of Your Computer" Electronics Hub, October 06, 2019
-
 [3] Zhou Ren, Junsong Yuan, Member, IEEE, Jingjing Meng, Member, IEEE, and Zhengyou Zhang, Fellow, IEEE "Robust Part-Based Hand Gesture Recognition Using Kinect Sensor" IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 15, NO. 5, AUGUST 2013
-
 [4] "Training a Neural Network to Detect Gestures with OpenCV in Python", Brenner Heintz, December 18, 2018
-
 [5] "Install OpenCV 4 on your Raspberry Pi", Adrian Rosebrock, September 26, 2018
-
 [6] http://meseec.ce.rit.edu/551-projects/spring2017/2-3.pdf
-
 [7] https://www.geeksforgeeks.org/difference-32-bit-64-bit-operating-systems
-
 [8] https://www.digitaltrends.com/computing/32-bit-vs-64-bit-operating-systems/
-
 [9] https://qengineering.eu/install-tensorflow-2.2.0-on-raspberry-pi-4.html
-
 [10] https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
-
 [11] https://realpython.com/python-wheels/
-
 [12] https://www.bazel.build/
-
 [13] https://algorithmia.com/blog/the-best-ai-programming-languages-to-use#:~:text=Rust-,Python,is%20relatively%20simple%20to%20write.
-
 [15] Pulli, Kari "Realtime Computer Vision with OpenCV" AMCQUEUE, 2012
+[16] https://opencv.org/about/
 
