@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 import cv2
 import json
@@ -14,38 +12,38 @@ from PIL import Image
 from tensorflow.keras.models import load_model
 from tensorflow.keras.models import model_from_json
 
-# 使用pygame來建一個預測視窗
+# use pygame to build a perdiction frame
 pygame.init()
 screen = pygame.display.set_mode((400,400),pygame.RESIZABLE)
 CLIP_X1,CLIP_Y1,CLIP_X2,CLIP_Y2 = 160,140,400,360
 
-# 讀訓練好的model
+# read the trained model
 with open('model_trained.json','r') as f:
     model_json = json.load(f)
 loaded_model = model_from_json(model_json)
 loaded_model.load_weights('model_trained.h5')
 
-cap = cv2.VideoCapture(1) # 擷取鏡頭畫面
-i = 0 # 用來記錄之後要新增的image
-wzs = 161 # 調整二值化的閥值變數
-image_q = cv2.THRESH_BINARY # 調整二值化的模式
+cap = cv2.VideoCapture(1) # open the camera
+i = 0 # to record the image amount
+wzs = 161 # adjust the binary threshold
+image_q = cv2.THRESH_BINARY # adjust the mode of binary
 
 while True:
-    _, FrameImage = cap.read() # 讀取鏡頭畫面
-    FrameImage = cv2.flip(FrameImage, 1) # 圖像水平翻轉
-    cv2.imshow("", FrameImage) # 顯示鏡頭畫面
-    cv2.rectangle(FrameImage, (CLIP_X1, CLIP_Y1), (CLIP_X2, CLIP_Y2), (0,255,0) ,1) # 框出ROI位置
+    _, FrameImage = cap.read() # read the frame
+    FrameImage = cv2.flip(FrameImage, 1) # flip the frame horizontally
+    cv2.imshow("", FrameImage) # show the frame
+    cv2.rectangle(FrameImage, (CLIP_X1, CLIP_Y1), (CLIP_X2, CLIP_Y2), (0,255,0) ,1) # mark the position of ROI
 
     ROI = FrameImage[CLIP_Y1:CLIP_Y2, CLIP_X1:CLIP_X2] # ROI的大小
     ROI = cv2.resize(ROI, (128, 128))  # ROI resize
-    ROI = cv2.cvtColor(ROI, cv2.COLOR_BGR2GRAY) # ROI 轉灰階
-    _, output = cv2.threshold(ROI, wzs, 255, image_q) # Threshold Binary：即二值化，將大於閾值的灰度值設為最大灰度值，小於閾值的值設為0。
+    ROI = cv2.cvtColor(ROI, cv2.COLOR_BGR2GRAY) # turn ROI to grayscale
+    _, output = cv2.threshold(ROI, wzs, 255, image_q) # Threshold Binary
     
     SHOWROI = cv2.resize(ROI, (256, 256)) # ROI resize
     _, output2 = cv2.threshold(SHOWROI, wzs, 255, image_q) # Black Background is better for prediction
     cv2.imshow("ROI", output2)
 
-    # 需要存dataset時，可以使用下面這三行進行取樣
+    # these lines are for training the data
     # cv2.imwrite('./test/handdata'+str(i)+'.jpg',output2)
     # i += 1
     # cv2.waitKey(100)
@@ -62,9 +60,9 @@ while True:
                   'yo':    result[0][7],
                   }
     print(predict)
-    predict = sorted(predict.items(), key=operator.itemgetter(1), reverse=True) # 分數較高者會sort至第一位
+    predict = sorted(predict.items(), key=operator.itemgetter(1), reverse=True) # the one who get higher score will sort to the first place
 
-    # 這邊是取對應預測的image，沒有則是顯示nosign
+    # show the result the trained model think is the answer, if no will show a nosign picture
     if(predict[0][1] == 1.0):
         predict_img  = pygame.image.load(os.getcwd() + '/Hand_gesture/dataset/' + predict[0][0] + '.png')
     else:
@@ -73,7 +71,7 @@ while True:
     screen.blit(predict_img, (0,0))
     pygame.display.flip()
 
-    # 在ROI上觸及英數字，來反饋效果
+    # additional function to do on the ROI with keyboard buttons
     interrupt = cv2.waitKey(10)
     if interrupt & 0xFF == ord('l'): # lower wzs quality
       wzs = wzs - 5
