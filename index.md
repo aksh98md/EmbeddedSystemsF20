@@ -213,11 +213,23 @@ Now we are able to work with the hardware part.
 Add things here.
 
 ### 7. Conclusion and Future Works
-Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry pi collected image recognition from the USB video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our laptops and then transfering that model to our Raspberry Pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
+Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry Pi collected image recognition from the USB video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our laptops and then transfering that model to our Raspberry Pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
 
 There is always ways to make interfaces more user friendly and effective. For this project, future works can involve more options for hand gestures, which would give more functionality to the system. Additionally, improving the algorithm to make it faster at detecting hand gestures would be beneficial to the system.
 
 ### 8. Contributions
+
+Andrew Ho: 
+
+Tu Yu Hsien: 
+Training the model using CNN method algorithm and OpenCV library. 
+Build our own dataset(2500 images for each type). 
+Testing the model in python. 
+Create the signal to be able to send to the Raspberry Pi.
+
+Jessica Bojorquez:
+
+
 ### 9. References
 
 [1] C.J. Cohen, G. Beach, G. Foulk "A basic hand gesture control system for PC applications"  Proceedings 30th Applied Imagery Pattern Recognition Workshop (AIPR 2001). Analysis and Understanding of Time Varying Imagery
