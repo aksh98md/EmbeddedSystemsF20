@@ -16,27 +16,27 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Model, Sequential
 
 
-# 設個picture大小及data路徑
+# set the picture size and the data path
 pic_size = 128
 image_path = './Hand_gesture/dataset/trained_image/'
 
-# 印出dataset中各類有幾張image
+# print the total number of the image of each type in the dataset
 for image_count in os.listdir(image_path):
     print(str(len(os.listdir(image_path + image_count))) + " " + image_count + " images")
 
-# 記錄總共有幾張image
+# record the total number of the dataset image
 file_count = 0
 for floderName in os.listdir(image_path):
     for filename in os.listdir(image_path + floderName):
         file_count +=1
 print('all_image_file: ',file_count)
 
-# 建立空的np_array (待會填label用)
+# build a empty np_array for the label
 label_default = np.zeros(shape=[file_count])
 img_default = np.zeros(shape=[file_count,pic_size,pic_size])
 file_count = 0
 
-# 給各個floder中的image上label
+# mark the image with a label in each folder
 for floderName in os.listdir(image_path):
     for filename in os.listdir(image_path + floderName):        
         print(image_path)
@@ -66,22 +66,22 @@ for floderName in os.listdir(image_path):
             label_default[file_count] = 7
         file_count +=1
 
-# reshape成丟進model input的dimension
+# reshape tp the dimension that is going to throw into the input
 img_default = img_default.reshape(file_count,pic_size,pic_size,1)
 img_default.shape
 
-label_onehot=np_utils.to_categorical(label_default) # 做onehot encoding
-print('label_onehot[0]:{},label_dim:{},shape:{}'.format(label_onehot[0],label_onehot.ndim,label_onehot.shape)) # Label(Encoding結果 , 維度, shape)
-img_default = img_default / 255.0 # 做 normalization
+label_onehot=np_utils.to_categorical(label_default) # do onehot encoding
+print('label_onehot[0]:{},label_dim:{},shape:{}'.format(label_onehot[0],label_onehot.ndim,label_onehot.shape)) # Label(Encoding result , dimension, shape)
+img_default = img_default / 255.0 # do normalization
 
 
-random_seed  = 3 # 隨機分割
-x_train, x_test, y_train, y_test = train_test_split(img_default, label_onehot, test_size = 0.2, random_state=random_seed) # 切分訓練及測試集
+random_seed  = 3 # random segmentation
+x_train, x_test, y_train, y_test = train_test_split(img_default, label_onehot, test_size = 0.2, random_state=random_seed) 
 print('x_train.shape:{}\n,y_train.shape:{}\nx_test.shape:{}\ny_test.shape:{}'.format(x_train.shape, y_train.shape, x_test.shape, y_test.shape)) #(train_img, train_label, test_img, test_label)
 
 
-#classes = 5 # 有五種分類
-classes = 8 # 有八種分類
+#classes = 5 # 5 types of gestures
+classes = 8 # 8 types of gestures
 
 model = Sequential([
     Conv2D(64, 3, activation='relu', input_shape=(pic_size,pic_size,1)),
@@ -99,7 +99,7 @@ model.compile(optimizer=Adam(lr=0.001), loss='categorical_crossentropy', metrics
 model.summary()
 model.fit(x_train,y_train,validation_data=(x_test,y_test),epochs=20)
 
-# 將訓練好的model儲存成json及h5檔
+# store the trained model into json and h5 file
 import json
 model_json = model.to_json()
 with open("model_trained.json", "w") as json_file:
