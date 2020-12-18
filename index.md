@@ -52,10 +52,7 @@ Our team opted to use Python for our learning algorithm, hence we installed Pyth
 
 ![alt text](https://raw.githubusercontent.com/aksh98md/EmbeddedSystemsF20/gh-pages/rpi_setup.JPG)
 
-Our group worked on the hardware enviroment set up individually, therefore the Tensorflow version installed in our Raspberry Pi were 2.1 and 2.3. That camp up with some challenges, as our model was trained in version 2.3.1 and hence, some adjustements had to be done in order to ensure the model would predict in our Raspberry Pi. Tensorflow open-source software library has evolved and become quite large, therefore building it  on a simple 32-bit machine has become a difficult task. Rhaspberry Pi offers a faster and smaller version of Tensorflow, TensorFlow Lite, it uses less resources as it is designed for smalle computers. We opted for the normal Tensorflow library, since it was beneficial to perform training in our laptops for higher accuracy and speed purposes. Since our training was done in our laptops, our training model json file had to be serialized in order to work on out Raspberry Pi. To serialize, we use the model structure that is initially saved in a json file, together with the weights of the model saved in .h5 file, and serialize using the data. The modification to the Raspberry Pi would not have been necessary had we had the same version of tensorlow, but as we had to work distanced, our final hardware enviroments were set up differently. 
-
-(discuss more of the saveModelArch.py)
-
+Our group worked on the hardware enviroment set up individually, therefore the Tensorflow version installed in our Raspberry Pi were 2.1 and 2.3. That came with some challenges, as our model was trained in version 2.3.1 and hence, some adjustements had to be done in order to ensure the model would predict in our Raspberry Pi. Tensorflow open-source software library has evolved and become quite large, therefore building it  on a simple 32-bit machine has become a difficult task. Raspberry Pi offers a faster and smaller version of Tensorflow, TensorFlow Lite, it uses less resources as it is designed for smaller computers. We opted for the normal Tensorflow library, since it was beneficial to perform training in our laptops for higher accuracy and speed purposes. Since our training was done in our laptops, our training model json file had to be serialized in order to work on out Raspberry Pi. To serialize, we use the model structure that is initially saved in a json file, together with the weights of the model saved in .h5 file, and serialize using the data. The modification to the Raspberry Pi would not have been necessary had we had the same version of tensorlow, but as we had to work distanced, our final hardware enviroments were set up differently. Serializing complex data, such as our model, allos us to be converted to a native Python datatype and this makes it easy to render into JSON, XML, or other types. [20]
 
 #### Specifications
 The Raspberry Pi 3 Model B+:
@@ -269,4 +266,5 @@ Jessica Bojorquez:
 
 [19] https://docs.opencv.org/2.4/modules/highgui/doc/user_interface.html?highlight=waitkey#waitkey
 
+[20] https://www.django-rest-framework.org/api-guide/serializers/
 
