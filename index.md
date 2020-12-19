@@ -50,7 +50,7 @@ Raspberry Pi is a single board computer that has an ARMv6 700 MHz single-core pr
 
 Our team opted to use Python for our learning algorithm, hence we installed Python 3 in our Raspberry Pi. Tensorflow occupies about 1 GB of our microSD cards, and it is a library whos main focus is deep learning. Because this library consumes a large amount of resources, executing tensorflow in our Raspberry Pi can be slow and it should not be expected to get fast results. Our small embedded device is only be able to deploy the most common models. According to qengineeding.eu, it will not be possible to train new models, or perform transfer learning. They advice to run pre-built deep learning models, conver frozen TensorFlow models to TensorFlow Lite flat buffer models.[9]
 
-![alt text](https://raw.githubusercontent.com/aksh98md/EmbeddedSystemsF20/gh-pages/rpi_setup.JPG)
+![alt text](https://github.com/aksh98md/EmbeddedSystemsF20/blob/gh-pages/ArduinoRpiSetup.jpg?raw=true)
 
 Our group worked on the hardware enviroment set up individually, therefore the Tensorflow version installed in our Raspberry Pi were 2.1 and 2.3. That came with some challenges, as our model was trained in version 2.3.1 and hence, some adjustements had to be done in order to ensure the model would predict in our Raspberry Pi. Tensorflow open-source software library has evolved and become quite large, therefore building it  on a simple 32-bit machine has become a difficult task. Raspberry Pi offers a faster and smaller version of Tensorflow, TensorFlow Lite, it uses less resources as it is designed for smaller computers. We opted for the normal Tensorflow library, since it was beneficial to perform training in our laptops for higher accuracy and speed purposes. Since our training was done in our laptops, our training model json file had to be serialized in order to work on out Raspberry Pi. To serialize, we use the model structure that is initially saved in a json file, together with the weights of the model saved in .h5 file, and serialize using the data. The modification to the Raspberry Pi would not have been necessary had we had the same version of tensorlow, but as we had to work distanced, our final hardware enviroments were set up differently. Serializing complex data, such as our model, allos us to be converted to a native Python datatype and this makes it easy to render into JSON, XML, or other types. [20]
 
@@ -58,7 +58,7 @@ Our group worked on the hardware enviroment set up individually, therefore the T
 The Raspberry Pi 3 Model B+:
 1.  Broadcom BCM2837B0, Cortex-A53 (ARMv8) 64-bit SoC @ 1.4GHz
 2.  1GB LPDDR2 SDRAM
-3.  2.4GHz and 5GHz IEEE 802.11.b/g/n/ac wireless LAN, Bluetooth 4.2, BLE
+3.  **2.4GHz and 5GHz IEEE 802.11.b/g/n/ac wireless LAN, Bluetooth 4.2, BLE**
 4.  Gigabit Ethernet over USB 2.0 (maximum throughput 300 Mbps)
 5.  Extended 40-pin GPIO header
 6.  Full-size HDMI
@@ -71,13 +71,9 @@ The Raspberry Pi 3 Model B+:
 13. Power-over-Ethernet (PoE) support (requires separate PoE HAT)
 
 
-#### Arduino
-
-(to-do)
-
 #### Specifications
-Arduino NANO 33 BLE
-1. Microcontroller	nRF52840 (datasheet)
+[Arduino Nano 33 BLE Sense](https://store.arduino.cc/usa/nano-33-ble-sense)
+1. Microcontroller	nRF52840 
 2. Operating Voltage	3.3V
 3. Input Voltage (limit)	21V
 4. DC Current per I/O Pin	15 mA
@@ -95,11 +91,11 @@ Arduino NANO 33 BLE
 16. External Interrupts	all digital pins
 17. LED_BUILTIN	13
 18. USB	Native in the nRF52840 Processor
-19. IMU	LSM9DS1 (datasheet)
-20. Length	45 mm
-21. Width	18 mm
-22. Weight	5 gr (with headers)
-
+19. IMU	LSM9DS1 
+20. **Microphone	MP34DT05**
+21. **Gesture, light, proximity	APDS9960**
+22. Barometric pressure	LPS22HB 
+23. Temperature, humidity	HTS221 
 
 ### 6. Analysis
 Computer vision is a fast growing field. Applications in computer vision focuses on analysing imagery data to understand past events, and in most cases they use that understanding to predict future events. Due to the high demand of powerful hardware and software for computer vision, programming languages now offer a great range of libraries to support the process. One of the greatest challenges of computer vision is the high demand in computational power, as  the computer vision process requires high power for both image process and computation. According to algorithmia.com, one of the most popular languages for aritificial intelligence applications is Python, but there are also other programs such as R, Java, Scala, and Rust. The reason why Python is one of the most popular programming languages for computer vision is that they have the most user friendly syntax, largest libraries and frameworks, dynamic applicability to a large amount of AI algorithms, and is very simple to read and write. [13] Some application areas for computer visions technology are video surveillance, biometrics, automotive, photography, movie production, Web search, medicine, augmented reality gaming, new user interfaces, and many more. [15]
@@ -122,51 +118,6 @@ To install TensorFlow, instead of installing from scratch, we used a short-cut p
 
 #### Python Image Recognition
 Our project makes use of the OpenCV and Tensorflow libraries in Python. A description of each algorithm is described next.
-
-#### Code Algorithm for Raspberry Pi
-Pseudo code for the algorithm that runs in the Raspberry Pi 3:
-
-    Use pygame to build a prediction window
-
-    Intialize a window or screen for display 
-
-    Read the trained model
-
-        Load a json file suing json.load()
-    
-        Load weights on the loaded model using a .h5 file, which contains multidimensional arrays of scientific data.
-    
-    Capture first image using USB camera
-
-    Adjust the threshold variable for binarization using openCV globa variable cv2.THRESH_BINARY 
-
-    If pixel intensity is greater than the set threshold, value set to 255, else set to 0 (black).
-
-
-    In a loop:
-
-        Read frame of picture using the cap.read() method from openCV library
-    
-        Display image using cv2.rectable() method, it takes in the image, start_point coordinate, end_point coordinate, color in form of a tuple, and thickness
-        
-        Handle region on interest
-    
-            Resize and change color to greyscale using cv2.resize() and cv2.cvtColor()
-        
-            Make black and white for better predition 
-        
-            In this binarization
-        
-                If the grey scale value is greater than the set-threshold-value, we set the color to the maximun grey (white)
-            
-                If the value is less than the set-threshold-value, we set colot to zero (black)
-            
-        Resize resulting image
-    
-        Predict using the model.predict() method 
-
-        Sort for printing
- 
  
 Explanation to some of the main functions used from openCV library are:
 
@@ -206,18 +157,88 @@ Before sending the detect_image signal to the Raspberry Pi, we also need to test
 
 Now we are able to work with the hardware part.
 
-#### Code Algorithm for Raspberry Pi and Arduino
-Add things here.
+#### Code Algorithm for Arduino
+Arduino acts as a system trigger, which is a snap or a wave near the camera. This allows the image recognition model to not be constantly running, which can reduce the power consumption of the system, as well as remove the possibility of accidental transmission of unwanted commands. The two trigger methods are controlled by a threshold each:
+
+Wave near camera: value of proximity reading < 220 (out of 256)
+
+Snap: RMS of microphone reading > 120
+
+Using root mean square of the microphone raw data smooths out the data just enough that it removes noisy spikes in the data but still retains the sharp waveform of the snapping sound.
+
+When one of these thresholds are met, an trigger event is sent through the serial as output, which is read by the Raspberry Pi.
+
+#### Code Algorithm for Raspberry Pi
+The Raspberry Pi is the "brain" of the system: it aggregates sensor data from the Arduino and web camera, makes a decision internally, and sends keystokes to a personal computer through Bluetooth if deemed necessary.
+
+
+Pseudo code of the main Python file `rpi.py` that runs in the Raspberry Pi 3:
+
+    Initialize bluetooth keyboard emulator, web camera, establish bluetooth connection, and identify the serial port that Arduino is using
+
+    Repopulate CNN model with the trained weights
+    
+    In main loop:
+
+        Read serial, wait for Arduino trigger event
+
+        Read frame of picture using the cap.read() method from openCV library
+    
+        Display image using cv2.rectable() method, it takes in the image, start_point coordinate, end_point coordinate, color in form of a tuple, and thickness
+        
+        Resize and change color to greyscale using cv2.resize() and cv2.cvtColor()
+    
+        Make black and white for better predition 
+    
+        In this binarization
+    
+            If the grey scale value is greater than the set-threshold-value, we set the color to the maximun grey (white)
+        
+            If the value is less than the set-threshold-value, we set colot to zero (black)
+            
+        Resize resulting image
+    
+        Predict using the model.predict() method 
+
+        Obtain highest probablility gesture, calculate patience and timeout to determine whether image capturing should continue
+
+        If concluded with final gesture, find keystokes tied to final class prediction and send through emulated Bluetooth keyboard
+
+#### Reading from Arduino Serial Output
+In order to read the trigger events from the Arduino, we use the serial package in Python to do so on the Raspberry Pi. The port `dev/tty*` needs to be specified, and in certain cases this port changes between `ttyACM0` and `ttyACM1` depending on whether other USB devices are plugged in as well. Therefore, a retry mechanism is implemented in the initialization phase and main looper, where if one port can not be accessed, then the other port would be tried next. In addition, the flushing of the input buffer ensures that events that were sent while the previous recognition was happening are not counted, only new events triggered after recognition completed is counted. 
+
+#### Hand Gesture Recoginition with Machine Learning Model
+The trained TensorFlow model is used to run prediction on the captured image from the web camera. The same preprocessing performed in training is done here as well, which include grayscaling and setting binary threshold. Two parameter, patience and timeout, define the length of how long recognition will run per triggered event. Patience is the number of consecutive readings needed to obtain final returned gesture, set to 5, in order to ensure the prediction is not a one-time fluke or the cause of a hand or object in motion. Timeout is the total number of detection attempts made before it is halted and returns to the state of observing the Arduino serial output, which is set to 1000 tries for demo purposes. 
+
+#### Sending Keystrokes through Bluetooth Keyboard Emulator 
+The following [repository](https://github.com/quangthanh010290/BL_keyboard_RPI) was referenced in sending the keystrokes through dbus. Initially, the Bluetooth service needs to be turned on and connected to the target personal computer manually. Specific keystrokes for mute/unmute video on Zoom (Command+Shift+v), mute/unmute audio on Zoom (Command+Shift+a), volume up, volume down, volume mute, closing tab/window (Command+w), and reopening most recently closed tab/window (Command+Shift+t) have been precorded and saved into pickle files, in the format of a list of keyboard events. When a final gesture prediction is obtained, it matches the specific keystroke file spcified in `gestureKeystrokeMapping.json`, which then runs the specificed keystroke events and broadcasts the keystrokes through Bluetooth the the personal computer. The recording of new keystrokes can be done by running `utils/recordKeyEvents.py`, by specifiying the saved pickle file name and typing on the Raspberry Pi during the execution of the program. The access, editing, and recording of these keystrokes and mapping can be done through SSH from the personal computer when the Raspberry Pi is connected to Wi-Fi. 
+
+
+#### Video Demo
+[Snap-Triggered Hand Gesture Detection to Enable Video on Zoom](https://youtu.be/5ycLfqzcBHM)
+
+[![Snap-Triggered Hand Gesture Detection to Enable Video on Zoom](https://img.youtube.com/vi/5ycLfqzcBHM/0.jpg)](https://www.youtube.com/watch?v=5ycLfqzcBHM)
+
+
+[Wave-Triggered Hand Gesture Detection to Mute Microphone on Zoom](https://youtu.be/42AuKV8WXLk)
+
+[![Wave-Triggered Hand Gesture Detection to Mute Microphone on Zoom](https://img.youtube.com/vi/42AuKV8WXLk/0.jpg)](https://www.youtube.com/watch?v=42AuKV8WXLk)
+
+[Snap-Triggered Hand Gesture Detection to Close Current Window](https://youtu.be/8_kCxsd8qAk)
+
+[![Snap-Triggered Hand Gesture Detection to Close Current Windowm](https://img.youtube.com/vi/8_kCxsd8qAk/0.jpg)](https://www.youtube.com/watch?v=8_kCxsd8qAk)
 
 ### 7. Conclusion and Future Works
-Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the raspberry pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry Pi collected image recognition from the USB video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our laptops and then transfering that model to our Raspberry Pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
+Our project consisted of a gesture based embedded system that acted as an assistant for user input through video camera. The Arduno contributed to our system by providing sensor data to the Raspberry Pi and therefore improving accuracy to our model. This was essential to reach our point of accuracy, as the model did not perform with high accuracy until the Arduino was added to the system. Our Raspberry Pi collected image recognition from the USB video camera and performed data analysing in real time. The connections of our system included BLE and Wi-Fi. Due to the limitations of hardware and python language speed, out team opted for training our model in our laptops and then transfering that model to our Raspberry Pi, which required to perform the process of serialization to adjut the trained model to the new enviroment. 
 
-There is always ways to make interfaces more user-friendly and effective. For this project, future works can involve more options for hand gestures, a more automated and dynamic interface, and more functionality to the system. Improving the algorithm to make it faster at detecting hand gestures would be beneficial to the system. Additionally,  our system works best with a single-color background to help contrast the hand and separate it from other surroundings in the frame. Getting rid of this need of a single-color backgroud would involve removing noise on the video frames by training a more complex model. One potential solution to this would be to implement an algorithm that better extracts a region of interest from an image, some functions that may be useful from OpenCV are GaussianBlur(), to remove noise from the gray-scale image, and Canny(), to obtain edges from the blurred images.
+There is always ways to make interfaces more user-friendly and effective. For this project, future works can involve more options for hand gestures, a more automated and dynamic interface, and more functionality to the system. Improving the algorithm to make it faster at detecting hand gestures would be beneficial to the system. The threshold for microphone and proximity data can be automatically adjusted based on environment during the setup phase, where background noise is measured and the user distance is taken as the baseline. The web camera also uses parameters for the binary black/white threshold that is dependent on the brightness of the room, which can be set during the setup phase to optimize for a image for the human figure. Lastly, the initialization of Bluetooth connection could be automated if a memory mechanism is implemented to auto-connect to the previous connection.
+
+Additionally,  our system works best with a single-color background to help contrast the hand and separate it from other surroundings in the frame. Getting rid of this need of a single-color backgroud would involve removing noise on the video frames by training a more complex model. One potential solution to this would be to implement an algorithm that better extracts a region of interest from an image, some functions that may be useful from OpenCV are GaussianBlur(), to remove noise from the gray-scale image, and Canny(), to obtain edges from the blurred images. More advanced signal processing techniques involving skin segmentation can also be implemented to effectively remove any background object noise and only capture the hand and fingers.
 
 
 ### 8. Contributions
 
-Andrew Ho: 
+Andrew Ho: Design of hardware/software system, Arduino coding, integration of sensor reading, camera. image recognition model and bluetooth keyboard emulation.
 
 Tu Yu Hsien: 
 Training the model using CNN method algorithm and OpenCV library. 
@@ -225,7 +246,7 @@ Build our own dataset(2500 images for each type).
 Testing the model in python. 
 Create the signal to be able to send to the Raspberry Pi.
 
-Jessica Bojorquez:
+Jessica Bojorquez: Background and Raspberry Pi research, setup, and integration
 
 
 ### 9. References
@@ -268,3 +289,4 @@ Jessica Bojorquez:
 
 [20] https://www.django-rest-framework.org/api-guide/serializers/
 
+[21] https://github.com/quangthanh010290/BL_keyboard_RPI
