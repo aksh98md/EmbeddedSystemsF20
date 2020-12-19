@@ -238,7 +238,11 @@ Additionally,  our system works best with a single-color background to help cont
 
 ### 8. Contributions
 
-Andrew Ho: Design of hardware/software system, Arduino coding, integration of sensor reading, camera. image recognition model and bluetooth keyboard emulation.
+Andrew Ho: 
+Design of hardware/software system
+Arduino coding, integration of sensor reading, camera. 
+Image recognition model and bluetooth keyboard emulation.
+
 
 Tu Yu Hsien: 
 Training the model using CNN method algorithm and OpenCV library. 
@@ -246,7 +250,10 @@ Build our own dataset(2500 images for each type).
 Testing the model in python. 
 Create the signal to be able to send to the Raspberry Pi.
 
-Jessica Bojorquez: Background and Raspberry Pi research, setup, and integration
+Jessica Bojorquez: 
+Literature reviews on prior works. 
+Research/documenation of project concepts and Raspberry Pi. 
+Integration and hardware set up to test code. 
 
 
 ### 9. References
